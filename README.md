@@ -1,5 +1,5 @@
 # Visuel
-Visuel is a ML-based web application using one of Clarifai's API. <br/> 
+Visuel is a ML-based full-stack web application using one of Clarifai's API. <br/> 
 **This project is still a work in progress.**
 
 ### Built With
