@@ -4,8 +4,12 @@
   --color-primary: #4b9be6;
   --color-primary-light: #2998ff;
   --color-primary-dark: #5643fa;
-  --color-secondary: #212121;
+  --color-secondary-light: #313131;
+  --color-secondary-dark: #212121;
 
+  --color-green: #7ed56f;
+  --color-orange: #ff7730;
+  
   --color-white: #fff;
   --color-black: #000;
 }

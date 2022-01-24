@@ -1,16 +1,24 @@
-import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
+import Navigation from './components/Navigation/Navigation';
+import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
+import Rank from './components/Rank/Rank';
+import ParticleBackdrop from './components/ParticleBackdrop/ParticleBackdrop';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="app">
-      <Navigation />
+    <main className='app'>
+      {/* <ParticleBackdrop /> */}
       <Logo />
-      {/* <ImageLinkForm /> */}
+      <Navigation />
+      {/* <Header /> */}
       {/* <FaceRecognition /> */}
-    </div>
+      <section className='home'>
+        <Rank />
+        <ImageLinkForm />
+      </section>
+    </main>
   );
 }
 
