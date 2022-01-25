@@ -11,7 +11,10 @@
   --color-orange: #ff7730;
   
   --color-white: #fff;
+  --color-grey-light: #ededed;
   --color-black: #000;
+
+  --default-text-size: 1.6rem;
 }
 
 *,
