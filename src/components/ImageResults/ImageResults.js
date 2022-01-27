@@ -9,13 +9,13 @@ const ImageResults = ({ imgUrl }) => {
       <div className="food-detector__results">
         <ul className='food-detector__list'>
           <li className='food-detector__list-item'>
-            <span>99% Tonkatsu</span>
+            <span>99% Pancakes</span>
           </li>
           <li className='food-detector__list-item'>
-            <span>99% Tonkatsu</span>
+            <span>99% Pancakes</span>
           </li>
           <li className='food-detector__list-item'>
-            <span>99% Tonkatsu</span>
+            <span>99% Pancakes</span>
           </li>
         </ul>
       </div>

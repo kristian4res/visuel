@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
 import ImageForm from './components/ImageForm/ImageForm';
 import ImageResults from './components/ImageResults/ImageResults';
-// import ParticleBackdrop from './components/ParticleBackdrop/ParticleBackdrop';
+import ParticleBackdrop from './components/ParticleBackdrop/ParticleBackdrop';
 
 import './App.scss';
 

@@ -26,6 +26,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
+  z-index: 2;
 
   height: 5rem;
   margin: 2rem 3rem 3rem;
@@ -113,6 +114,7 @@
   gap: 4rem;
 
   margin: 0 3rem;
+  z-index: 1;
 
   @media only screen and (max-width: 37.5em) {
     flex-direction: column;
