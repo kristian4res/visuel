@@ -6,7 +6,7 @@ const Navigation = () => {
     return (
         <div className="navigation">
             <div className='navigation__logo'>
-            <span>&#60;🥞&#62;</span>
+                <span>&#60;🥞&#62;</span>
             </div>
             <nav className="navigation__nav">
                 <ul className="navigation__list">
