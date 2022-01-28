@@ -9,7 +9,7 @@ const ImageForm = ({ onInputChange, onUrlSubmit }) => {
             </header>
             <form className='food-detector__form' onSubmit={onUrlSubmit}>
                 <div className="food-detector__form-group">
-                    <input className='food-detector__input' onChange={onInputChange} type="text" pattern="https://.*" placeholder='Paste image URL' />
+                    <input className='food-detector__input' onChange={onInputChange} type="text" pattern="https://.*" placeholder='Paste image URL' required />
                     <button className='btn' type="submit">Detect</button>
                 </div>
             </form>
