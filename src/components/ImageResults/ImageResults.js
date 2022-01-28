@@ -1,22 +1,40 @@
 import React from 'react';
 
-const ImageResults = ({ imgUrl }) => {
+const ImageResults = ({ imgUrl, imgConcepts }) => {
   return (
     <section className='food-detector__image-results'>
       <div className='food-detector__display'>
-        <img className='food-detector__image' src={imgUrl ? imgUrl : 'https://preppykitchen.com/wp-content/uploads/2019/08/Pancakes-recipe-1200.jpg'} alt="food" />
+        <img className='food-detector__image' src={imgUrl} alt="food" />
       </div>
       <div className="food-detector__results">
         <ul className='food-detector__list'>
           <li className='food-detector__list-item'>
-            <span>99% Pancakes</span>
+            <span>
+              {`${Number(imgConcepts[0].value * 100).toPrecision(4)}%`}
+            </span>
+            <span className="vertical-divider"></span>
+            <span className="food-detector__item-label">
+              {imgConcepts[0].name}
+            </span>
           </li>
           <li className='food-detector__list-item'>
-            <span>99% Pancakes</span>
+            <span className="food-detector__item-result">
+              {`${Number(imgConcepts[1].value * 100).toPrecision(4)}%`}
+            </span>
+            <span className="vertical-divider"></span>
+            <span className="food-detector__item-label">
+              {imgConcepts[1].name}
+            </span>
           </li>
           <li className='food-detector__list-item'>
-            <span>99% Pancakes</span>
-          </li>
+            <span>
+              {`${Number(imgConcepts[2].value * 100).toPrecision(4)}%`}
+            </span>
+            <span className="vertical-divider"></span>
+            <span className="food-detector__item-label">
+              {imgConcepts[2].name}
+            </span>
+          </li>  
         </ul>
       </div>
     </section>

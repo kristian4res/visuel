@@ -15,26 +15,30 @@ const clarifaiApp = new Clarifai.App({
 
 function App() {
   const [input, setInput] = useState('');
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState('https://preppykitchen.com/wp-content/uploads/2019/08/Pancakes-recipe-1200.jpg');
+  const [concepts, setConcepts] = useState([{}, {}, {}]);
 
-  // useEffect(() => {
-  //   callClarifaiAPI();
-  // }, [url]);
+  useEffect(() => {
+    callClarifaiAPI();
+  }, [url]);
+
+  const filterPredictions = (data) => {
+    const imagePredictions = data.outputs[0].data.concepts;
+
+    // Get top 3 predictions
+    const topPredictions = imagePredictions.slice(0, 3);
+    
+    return topPredictions;
+  };
 
   const callClarifaiAPI = () => {
-      clarifaiApp.models
-        .predict(
-          Clarifai.FOOD_MODEL,
-          url  
+    clarifaiApp.models
+      .predict(
+        Clarifai.FOOD_MODEL,
+        url  
         )
-        .then(
-          function(response) {
-            console.log(response);
-          },
-          function(err) {
-            console.log(err);
-          }
-        );
+      .then(response => setConcepts(filterPredictions(response)))
+      .catch(err => console.log(err)); 
   }
 
   const onInputChange = (event) => {
@@ -53,7 +57,7 @@ function App() {
       <Navigation />
       <main className='food-detector'>
         <ImageForm onInputChange={onInputChange} onUrlSubmit={onUrlSubmit} />
-        <ImageResults imgUrl={url} />
+        <ImageResults imgUrl={url} imgConcepts={concepts} />
       </main>
       {/* <footer className="footer">
         <div className="footer__logo-box">

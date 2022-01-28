@@ -245,7 +245,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
+
     list-style: none;
 
     animation-name: moveInBottom;
@@ -259,6 +259,7 @@
     max-height: 6rem;
     
     text-align: center;
+    text-transform: uppercase;
     color: var(--color-secondary-light);
     background-color: var(--color-white);
     font-size: var(--default-text-size);
@@ -375,6 +376,14 @@
         }
     }
   }
+}
+
+// Misc
+.vertical-divider {
+  display: inline;
+  margin: 0rem .6rem;
+
+  border-left: .25rem solid var(--color-primary-dark);
 }
 
 // Animations
