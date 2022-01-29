@@ -22,7 +22,7 @@ const Navigation = () => {
                     </li>
                     <li className="navigation__item">
                         <a href="#" className="navigation__link">
-                            register
+                            Register
                         </a>
                     </li>
                 </ul>

@@ -21,6 +21,7 @@
   }
 }
 
+// Navigation
 .navigation {
   display: flex;
   flex-direction: row;
@@ -105,6 +106,90 @@
   }
 }
 
+// Typography
+.header-text {
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--color-secondary-light);
+
+  &--main {
+    color: inherit;
+    font-size: 4.4rem;
+    text-align: center;
+    margin: .8rem 0;
+  }
+
+  &--sub {
+    color: inherit;
+    font-size: 2.4rem;
+    text-align: center;
+  }
+}
+
+// Forms
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 50vh;
+  min-width: 40%;
+
+  border-radius: 4px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .8);
+  
+  background-color: rgba(255, 255, 255, .5);
+
+  &__group {
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    font-family: inherit;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    width: 100%;  
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+
+    transition: all .3s;
+  }
+
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__input {
+    font-family: inherit;
+    font-size: var(--default-text-size);
+    color: var(--color-secondary-light);
+
+    width: 100%;  
+    margin-right: 1rem;
+    padding: 1rem 2rem;
+    
+    border: 0;
+    border-radius: 4px;
+    border-bottom: 3px solid transparent;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .3);
+    transition: all .3s;
+    
+    &:focus {
+        outline: none;
+        border-bottom: 3px solid var(--color-orange);            
+        
+        &:invalid {
+            border-bottom: 3px solid var(--color-green);
+        }
+    }
+  }
+}
+
+
+// Main Page
 .food-detector {
   display: flex;
   flex-direction: row;
@@ -127,24 +212,6 @@
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
-  }
-
-  &__header-text {
-    display: flex;
-    flex-wrap: wrap;
-
-    &--main {
-      color: inherit;
-      font-size: 4.4rem;
-      text-align: center;
-      margin: .8rem 0;
-    }
-
-    &--sub {
-      color: inherit;
-      font-size: 2.4rem;
-      text-align: center;
-    }
   }
   
   &__image-form {
@@ -248,12 +315,6 @@
     flex-wrap: wrap;
 
     list-style: none;
-
-    animation-name: moveInBottom;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
-    animation-delay: 0.75s;
-    animation-fill-mode: backwards;
   }
 
   &__list-item {
@@ -269,9 +330,27 @@
     border-radius: 4px;
     margin: .4rem 1rem;
     padding: 1rem;
+
+    animation-name: moveInBottom;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+
+    &--1 {
+      animation-delay: 0.75s;
+    }
+
+    &--2 {
+      animation-delay: 1s;
+    }
+
+    &--3 {
+      animation-delay: 1.25s;
+    }
   }
 }
 
+// Button
 .btn {
   display: flex;
   flex-basis: 20%;

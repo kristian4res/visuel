@@ -8,7 +8,7 @@ const ImageResults = ({ imgUrl, imgConcepts }) => {
       </div>
       <div className="food-detector__results">
         <ul className='food-detector__list'>
-          <li className='food-detector__list-item'>
+          <li className='food-detector__list-item food-detector__list-item--1'>
             <span>
               {`${Number(imgConcepts[0].value * 100).toPrecision(4)}%`}
             </span>
@@ -17,7 +17,7 @@ const ImageResults = ({ imgUrl, imgConcepts }) => {
               {imgConcepts[0].name}
             </span>
           </li>
-          <li className='food-detector__list-item'>
+          <li className='food-detector__list-item food-detector__list-item--2'>
             <span className="food-detector__item-result">
               {`${Number(imgConcepts[1].value * 100).toPrecision(4)}%`}
             </span>
@@ -26,7 +26,7 @@ const ImageResults = ({ imgUrl, imgConcepts }) => {
               {imgConcepts[1].name}
             </span>
           </li>
-          <li className='food-detector__list-item'>
+          <li className='food-detector__list-item food-detector__list-item--3'>
             <span>
               {`${Number(imgConcepts[2].value * 100).toPrecision(4)}%`}
             </span>
