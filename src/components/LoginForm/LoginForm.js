@@ -2,10 +2,11 @@ import React from 'react';
 
 const LoginForm = () => {
   return (
+    <main className="food-detector">
       <div className="form">
           <form action="#" className="form__sign-in">
                 <div style={{ 'margin-bottom': '2rem'}}>
-                    <h2 className="header-text--main">
+                    <h2 className="header-text header-text--main">
                         Login
                     </h2>
                 </div>
@@ -17,11 +18,12 @@ const LoginForm = () => {
                     <input className="form__input" type="password" name='password' placeholder='Enter password' />
                     <label className="form__label" htmlFor="email">Password</label>
                 </div>
-                <div className="form__group">
-                    <button className="btn" type="submit">Sign in</button>
+                <div className="form__group form__group--btn">
+                    <button className="btn btn--single" type="submit">Sign in</button>
                 </div>
           </form>
       </div>
+    </main>
   );
 };
 
