@@ -5,6 +5,7 @@ Visuel is a ML-based full-stack web application using one of Clarifai's API. <br
 ### Built With
   - [React](https://reactjs.org/)
   - [Scss/Sass](https://sass-lang.com/)
+  - [PostgreSQL](https://www.postgresql.org/)
   - [Heroku](https://www.heroku.com/)
 
 ## Usage
