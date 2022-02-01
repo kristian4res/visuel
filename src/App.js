@@ -7,6 +7,7 @@ import {
 import Navigation from './components/Navigation/Navigation';
 import FoodDetector from './pages/food-detector/food-detector.component';
 import LoginForm from './components/LoginForm/LoginForm';
+import RegistrationForm from './components/RegistrationForm/RegistrationForm';
 import ParticleBackdrop from './components/ParticleBackdrop/ParticleBackdrop';
 
 import './App.scss';
@@ -18,7 +19,7 @@ function App() {
       <Navigation />  
       <Routes>
         <Route exact path="/" element={<FoodDetector />} />
-        <Route exact path="/register" element={<LoginForm />} />
+        <Route exact path="/register" element={<RegistrationForm />} />
         <Route exact path="/login" element={<LoginForm />} />
       </Routes>
       {/* <footer className="footer">

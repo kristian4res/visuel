@@ -15,9 +15,9 @@ const FoodDetector = () => {
     const [url, setUrl] = useState('https://preppykitchen.com/wp-content/uploads/2019/08/Pancakes-recipe-1200.jpg');
     const [concepts, setConcepts] = useState([{}, {}, {}]);
   
-    // useEffect(() => {
-    //   callClarifaiAPI();
-    // }, [url]);
+    useEffect(() => {
+      callClarifaiAPI();
+    }, [url]);
   
     const filterPredictions = (data) => {
       const imagePredictions = data.outputs[0].data.concepts;

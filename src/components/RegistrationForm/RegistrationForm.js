@@ -1,13 +1,13 @@
 import React from 'react';
 
-const LoginForm = () => {
+const RegistrationForm = () => {
   return (
-    <main className="food-detector food-detector__login">
+    <main className="food-detector food-detector__registration">
       <div className="form">
-          <form action="#" className="form__login">
-                <div className='heading__container'>
+          <form action="#" className="form__register">
+                <div className='heading-container'>
                     <h2 className="heading__text heading__text--main">
-                        Login
+                        Register
                     </h2>
                 </div>
                 <div className="form__group">
@@ -18,8 +18,12 @@ const LoginForm = () => {
                     <input className="form__input" type="password" name='password' placeholder='Enter password' />
                     <label className="form__label" htmlFor="password">Password</label>
                 </div>
+                <div className="form__group">
+                    <input className="form__input" type="password" name='confirmPassword' placeholder='Confirm password' />
+                    <label className="form__label" htmlFor="confirmPassword">Confirm Password</label>
+                </div>
                 <div className="form__group form__group--btn">
-                    <button className="btn btn--colored-single" type="submit">Sign in</button>
+                    <button className="btn btn--colored-single" type="submit">Register</button>
                 </div>
           </form>
       </div>
@@ -27,4 +31,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;
