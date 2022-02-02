@@ -10,7 +10,7 @@ const clarifaiApp = new Clarifai.App({
  apiKey: '922a077a1cfc441db5a1a3ec2e2b93e0'
 });
 
-const FoodDetector = () => {
+const FoodDetector = ({ userLoggedIn }) => {
     const [input, setInput] = useState('');
     const [url, setUrl] = useState('https://preppykitchen.com/wp-content/uploads/2019/08/Pancakes-recipe-1200.jpg');
     const [concepts, setConcepts] = useState([{}, {}, {}]);
@@ -50,10 +50,8 @@ const FoodDetector = () => {
 
     return (
         <>
-            <main className='food-detector'>
-                <ImageForm onInputChange={onInputChange} onUrlSubmit={onUrlSubmit} />
-                <ImageResults imgUrl={url} imgConcepts={concepts} />
-            </main>
+          <ImageForm userLoggedIn={userLoggedIn} onInputChange={onInputChange} onUrlSubmit={onUrlSubmit} />
+          <ImageResults imgUrl={url} imgConcepts={concepts} />
         </>
     );
 }

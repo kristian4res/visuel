@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 // import './Navigation.scss';
 
-const Navigation = () => {
+const Navigation = ({ userLoggedIn }) => {
     return (
         <div className="navigation">
             <div className='navigation__logo'>
@@ -23,16 +23,26 @@ const Navigation = () => {
                             Home
                         </Link>
                     </li>
-                    <li className="navigation__item">
-                        <Link className="navigation__link" to="/login">
-                            Login
-                        </Link>
-                    </li>
-                    <li className="navigation__item">
-                        <Link className="navigation__link" to="/register">
-                            Register
-                        </Link>
-                    </li>
+                    {
+                        userLoggedIn 
+                        ? (<li className="navigation__item">
+                                <a href="#" className="navigation__link" onClick={() => console.log('Logged Out')}>
+                                    Log Out
+                                </a>
+                            </li>)
+                        : <>
+                            <li className="navigation__item">
+                                <Link className="navigation__link" to="/login">
+                                    Login
+                                </Link>
+                            </li>
+                            <li className="navigation__item">
+                                <Link className="navigation__link" to="/register">
+                                    Register
+                                </Link>
+                            </li>
+                        </>
+                    }                 
                 </ul>
             </nav>
       </div>

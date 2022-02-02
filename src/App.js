@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Routes,
-  Route
+  Route,
+  Navigate
 } from 'react-router-dom';
 
 import Navigation from './components/Navigation/Navigation';
@@ -13,15 +14,27 @@ import ParticleBackdrop from './components/ParticleBackdrop/ParticleBackdrop';
 import './App.scss';
 
 function App() {
+  const [userLoggedIn, setuserLoggedIn] = useState(false);
+
   return (
     <div className='app'>
       {/* <ParticleBackdrop /> */}
-      <Navigation />  
-      <Routes>
-        <Route exact path="/" element={<FoodDetector />} />
-        <Route exact path="/register" element={<RegistrationForm />} />
-        <Route exact path="/login" element={<LoginForm />} />
-      </Routes>
+      <Navigation userLoggedIn={userLoggedIn} />
+      <main className="food-detector">
+        <Routes>
+          <Route exact path="/" element={<FoodDetector userLoggedIn={userLoggedIn} />} />
+          <Route exact path="/register" element={
+            userLoggedIn 
+            ? <Navigate to="/" />
+            : <RegistrationForm />
+          } />
+          <Route exact path="/login" element={
+            userLoggedIn 
+            ? <Navigate to="/" />
+            : <LoginForm />
+          } />
+        </Routes>
+      </main>  
       {/* <footer className="footer">
         <div className="footer__logo-box">
           <span>&#60;🥞&#62;</span>
