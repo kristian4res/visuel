@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const LoginForm = () => {
   return (
     <div className="form">
-        <form action="#" className="form__login">
+        <div className="form__login">
             <div className='heading__container'>
                 <h2 className="heading__text heading__text--main">
                     Login
@@ -21,7 +21,7 @@ const LoginForm = () => {
             <div className="form__group form__group--btn">
                 <button className="btn btn--colored-single" type="submit">Sign in</button>
             </div>
-        </form>
+        </div>
         <div className="form-options">
             <Link className="form-options__link" to="/register">Don't have an account?</Link>
         </div>
