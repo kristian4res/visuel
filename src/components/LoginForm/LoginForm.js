@@ -11,12 +11,12 @@ const LoginForm = () => {
                 </h2>
             </div>
             <div className="form__group">
-                <input className="form__input" type="email" name='email' placeholder='Enter email' />
                 <label className="form__label" htmlFor="email">Email Address</label>
+                <input className="form__input" type="email" name='email' placeholder='Enter email' />
             </div>
             <div className="form__group">
-                <input className="form__input" type="password" name='password' placeholder='Enter password' />
                 <label className="form__label" htmlFor="password">Password</label>
+                <input className="form__input" type="password" name='password' placeholder='Enter password' />
             </div>
             <div className="form__group form__group--btn">
                 <button className="btn btn--colored-single" type="submit">Sign in</button>
