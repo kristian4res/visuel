@@ -697,6 +697,12 @@
 .keyword-animation {
   margin: .8rem;
   max-width: 120rem;
+
+  animation-name: moveInBottom;
+  animation-delay: 0.8s;
+  animation-duration: .5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
 }
 
 .typed-text {

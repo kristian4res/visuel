@@ -14,9 +14,12 @@ const ImageForm = ({ userLoggedIn, onInputChange, onUrlSubmit }) => {
                     className="heading__text--sub typed-text"
                     cursor={true}
                     repeat={Infinity}
-                    sequence={['Syrup', 1500,
-                                'Sweet', 1500, 
-                                'Pancake']}
+                    sequence={[ '', 1300,
+                                'Syrup', 1600,
+                                '', 1300,
+                                'Sweet', 1600,
+                                '', 1300, 
+                                'Pancake', 1600]}
                     wrapper="h3"
                 />
             </div>
