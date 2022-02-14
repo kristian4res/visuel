@@ -28,14 +28,15 @@ const FoodDetector = ({ userLoggedIn }) => {
       return topPredictions;
     };
   
-    const callClarifaiAPI = () => {
-      clarifaiApp.models
+    const callClarifaiAPI = async () => {
+      const response = await clarifaiApp.models
         .predict(
           Clarifai.FOOD_MODEL,
           url  
-          )
-        .then(response => setConcepts(filterPredictions(response)))
-        .catch(err => console.log(err)); 
+          );
+      if (response) {
+        setConcepts(filterPredictions(response));
+      }
     }
   
     const onInputChange = (event) => {
