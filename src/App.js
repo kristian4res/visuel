@@ -21,7 +21,7 @@ function App() {
     <div className='app'>
       <div className="page-container">
         {/* <ParticleBackdrop /> */}
-        <Navigation userLoggedIn={userLoggedIn} />
+        <Navigation userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} />
         <main className="food-detector">
           <Routes>
             <Route exact path="/" element={<FoodDetector userLoggedIn={userLoggedIn}  />} />

@@ -323,6 +323,7 @@
   }
 
   &__group {
+    max-width: 46rem;
     width: 100%;
     
     &:not(:last-child) {
@@ -334,6 +335,7 @@
       justify-content: center;
 
       width: 100%;
+      margin-top: 1rem;
     }
   }
 
@@ -347,6 +349,18 @@
     padding: 1rem;
 
     transition: all .3s;
+  }
+
+  &__error-text {
+    display: none;
+
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--color-red);
+    word-wrap: break-word;
+
+    padding: .5rem 1rem;
   }
 
   &__input {

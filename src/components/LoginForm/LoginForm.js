@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const LoginForm = ({ userLoggedIn, setuserLoggedIn }) => {
     const navigate = useNavigate();
+    const [errorText, setErrorText] = useState({});
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -33,18 +34,18 @@ const LoginForm = ({ userLoggedIn, setuserLoggedIn }) => {
 
         postData().then(
             (serverResponse) => {
-                if (serverResponse) {
-                    if (!userLoggedIn && serverResponse.value === "Success") {
-                        setuserLoggedIn(true);
-                        navigate(`/`);
-                    }
-                    else {
-                        navigate(`/login?error=${'loginError'}`);
-                    }
-        
-                    setEmail('');
-                    setPassword('');
+                if (!userLoggedIn && serverResponse === "Success") {
+                    setErrorText('');
+                    setuserLoggedIn(true);
+                    navigate(`/`);
                 }
+                else {
+                    setErrorText(serverResponse);
+                    navigate(`/login`);
+                }
+                
+                setEmail('');
+                setPassword('');
             }
         );
     };
@@ -59,11 +60,13 @@ const LoginForm = ({ userLoggedIn, setuserLoggedIn }) => {
             </div>
             <div className="form__group">
                 <label className="form__label" htmlFor="email">Email Address</label>
-                <input className="form__input" onChange={onEmailChange} type="email" name='email' placeholder='Enter email' />
+                <input className="form__input" onChange={onEmailChange} value={email} type="email" name='email' placeholder='Enter email' required />
+                <span className="form__error-text" style={{ 'display': `${errorText.length !== 0 ? 'inline-block' : 'none'}`}}>{errorText ? errorText.emailError : ''}</span>
             </div>
             <div className="form__group">
                 <label className="form__label" htmlFor="password">Password</label>
-                <input className="form__input" onChange={onPasswordChange} type="password" name='password' placeholder='Enter password' />
+                <input className="form__input" onChange={onPasswordChange} value={password} type="password" name='password' placeholder='Enter password' required />
+                <span className="form__error-text" style={{ 'display': `${errorText.length !== 0 ? 'inline-block' : 'none'}`}}>{errorText ? errorText.passwordError : ''}</span>
             </div>
             <div className="form__group form__group--btn">
                 <button className="btn btn--colored-single" type='submit'>Log in</button>

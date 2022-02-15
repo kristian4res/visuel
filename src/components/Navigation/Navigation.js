@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 // import './Navigation.scss';
 
-const Navigation = ({ userLoggedIn }) => {
+const Navigation = ({ userLoggedIn, setuserLoggedIn }) => {
     return (
         <div className="navigation">
             <div className='navigation__logo'>
@@ -29,7 +29,7 @@ const Navigation = ({ userLoggedIn }) => {
                     {
                         userLoggedIn 
                         ? (<li className="navigation__item">
-                                <a href="#" className="navigation__link" onClick={() => console.log('Logged Out')}>
+                                <a href="#" className="navigation__link" onClick={() => setuserLoggedIn(false)}>
                                     Log Out
                                 </a>
                             </li>)
