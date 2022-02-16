@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const RegistrationForm = ({userLoggedIn, setuserLoggedIn}) => {
+const RegistrationForm = ({userLoggedIn, setuserLoggedIn, setUser}) => {
     const navigate = useNavigate();
     const [errorText, setErrorText] = useState({});
     const [email, setEmail] = useState('');
@@ -50,7 +50,7 @@ const RegistrationForm = ({userLoggedIn, setuserLoggedIn}) => {
 
         postData().then(
             (serverResponse) => {
-                if (!userLoggedIn && serverResponse === "Success") {
+                if (!userLoggedIn && serverResponse.success.length > 0) {
                     setErrorText('');
                     setuserLoggedIn(true);
                     navigate(`/`);

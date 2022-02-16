@@ -21,7 +21,6 @@ const FoodDetector = ({ userLoggedIn }) => {
   
     const filterPredictions = (data) => {
       const imagePredictions = data.outputs[0].data.concepts;
-  
       // Get top 3 predictions
       const topPredictions = imagePredictions.slice(0, 3);
       

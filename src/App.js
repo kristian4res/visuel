@@ -16,6 +16,27 @@ import './App.scss';
 
 function App() {
   const [userLoggedIn, setuserLoggedIn] = useState(false);
+  const [user, setUser] = useState({
+    user: {
+      id: '',
+      name: '',
+      email: '',
+      entries: 0,
+      joined: ''
+    }
+  });
+
+  const loadUser = (data) => {
+    setUser({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        entries: data.entries,
+        joined: data.joined
+      } 
+    })
+  }
 
   return (
     <div className='app'>
@@ -33,7 +54,7 @@ function App() {
             <Route exact path="/login" element={
               userLoggedIn 
               ? <Navigate to="/" />
-              : <LoginForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} />
+              : <LoginForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} setUser={setUser} />
             } />
           </Routes>
         </main>  
