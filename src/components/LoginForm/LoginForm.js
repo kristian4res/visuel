@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
-const LoginForm = ({ userLoggedIn, setuserLoggedIn, setUser }) => {
+const LoginForm = ({ userLoggedIn, setuserLoggedIn, loadUser }) => {
     const navigate = useNavigate();
     const [errorText, setErrorText] = useState({});
     const [email, setEmail] = useState('');
@@ -36,7 +36,7 @@ const LoginForm = ({ userLoggedIn, setuserLoggedIn, setUser }) => {
             (serverResponse) => {
                 if (!userLoggedIn && serverResponse.success.length > 0) {
                     setErrorText('');
-                    setUser(serverResponse.user);
+                    loadUser(serverResponse.user);
                     setuserLoggedIn(true);
                     navigate(`/`);
                 }

@@ -45,7 +45,7 @@ function App() {
         <Navigation userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} />
         <main className="food-detector">
           <Routes>
-            <Route exact path="/" element={<FoodDetector userLoggedIn={userLoggedIn}  />} />
+            <Route exact path="/" element={<FoodDetector userLoggedIn={userLoggedIn} user={user} setUser={setUser} />} />
             <Route exact path="/register" element={
               userLoggedIn 
               ? <Navigate to="/" />
@@ -54,7 +54,7 @@ function App() {
             <Route exact path="/login" element={
               userLoggedIn 
               ? <Navigate to="/" />
-              : <LoginForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} setUser={setUser} />
+              : <LoginForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} loadUser={loadUser} />
             } />
           </Routes>
         </main>  
