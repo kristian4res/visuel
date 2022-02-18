@@ -20,8 +20,12 @@
     &__text {
       width: 80%;
 
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       text-align: center;
+
+      @media only screen and (max-width: 37.5em) {
+        font-size: 1.2rem;
+      }
     }
   }
 }
@@ -91,7 +95,7 @@
 
       transition: all .3s cubic-bezier(1, 0, 0, 1);
 
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -143,6 +147,10 @@
     font-family: inherit;
     border-radius: 4px;
     padding: 0.2em 0;
+
+    & > span {
+      font-size: 4rem;
+    }
     
     &:link, &:visited {
       display: inline-block;
@@ -446,7 +454,7 @@
   flex: 1;
   gap: 2rem;
 
-  margin: 0 3rem;
+  margin: 3rem;
   z-index: 1;
 
   @media only screen and (max-width: 37.5em) {

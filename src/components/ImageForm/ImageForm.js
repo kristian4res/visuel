@@ -6,7 +6,15 @@ const ImageForm = ({ userLoggedIn, onInputChange, onUrlSubmit }) => {
                 <h4 className="heading__text--sub">A food image recognition app</h4>
             </header>
             <article className="app__description">
-                <p className="app__description__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error facilis doloribus aliquid voluptatibus, enim sapiente quas provident impedit consequuntur id corporis magnam, quos non dolorem quo culpa, hic blanditiis harum.</p>
+                <p className="app__description__text">
+                    This is a personalized version of the Smart Brain project from ZTM Academy.
+                    It uses Clarifai's food image model to analyze (food-related) images and generate a list of keywords that relate to the submitted image.
+                    {/* 
+                    To use the app, you are required to have an account (go to Register) in order to login.
+                    After logging in, an input box should appear below this text where you will be able to paste the URL of an (food-related) image.
+                    The results will be shown on the right handside (desktop view) or under the input box (mobile view).
+                     */}
+                </p>
             </article>
             {
                 userLoggedIn 

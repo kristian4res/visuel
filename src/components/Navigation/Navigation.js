@@ -7,7 +7,9 @@ const Navigation = ({ userLoggedIn, setuserLoggedIn }) => {
     return (
         <div className="navigation">
             <div className='navigation__logo'>
-                <span>&#60;🥞&#62;</span>
+                <Link className="navigation__link navigation__link--logo" to="/">
+                    <span>&#60;🥞&#62;</span>
+                </Link>
             </div>
 
             <input type="checkbox" className="navigation__checkbox" id="navi-toggle" />
