@@ -7,7 +7,7 @@ const ImageForm = ({ userLoggedIn, onInputChange, onUrlSubmit }) => {
             </header>
             <article className="app__description">
                 <p className="app__description__text">
-                    This is a personalized version of the Smart Brain project from ZTM Academy.
+                    This is a spin-off of the Smart Brain project from ZTM Academy.
                     It uses Clarifai's food image model to analyze (food-related) images and generate a list of keywords that relate to the submitted image.
                     {/* 
                     To use the app, you are required to have an account (go to Register) in order to login.
