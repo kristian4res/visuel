@@ -30,6 +30,7 @@ function App() {
     try  {
       const userDetails = JSON.parse(window.localStorage.getItem("visuel-user"));
       setUser({userDetails: userDetails});
+      setuserLoggedIn(true);
     }
     catch (err) {
       return "No user in session";
