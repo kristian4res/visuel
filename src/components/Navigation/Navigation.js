@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import './Navigation.scss';
-
 const Navigation = ({ userLoggedIn, setUser, setuserLoggedIn }) => {
     return (
         <div className="navigation">
@@ -31,8 +29,10 @@ const Navigation = ({ userLoggedIn, setUser, setuserLoggedIn }) => {
                     {
                         userLoggedIn 
                         ? (<li className="navigation__item">
+                                {/* Hacky Logout */}
                                 <a href="/" className="navigation__link" onClick={() => {
-                                    setUser({user: {}});
+                                    setUser({userDetails: {}});
+                                    window.localStorage.removeItem("visuel-user");
                                     setuserLoggedIn(false);
                                 }}>
                                     Log Out

@@ -26,6 +26,20 @@ function App() {
     }
   });
 
+  useEffect(() => {
+    try  {
+      const userDetails = JSON.parse(window.localStorage.getItem("visuel-user"));
+      setUser({userDetails: userDetails});
+    }
+    catch (err) {
+      return "No user in session";
+    }
+  }, [setUser]);
+
+  useEffect(() => {
+    window.localStorage.setItem("visuel-user", JSON.stringify(user.userDetails));
+  }, [user]);
+
   return (
     <div className='app'>
       <div className="page-container">
