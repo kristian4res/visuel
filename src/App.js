@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Routes,
   Route,
@@ -17,7 +17,7 @@ import './App.scss';
 function App() {
   const [userLoggedIn, setuserLoggedIn] = useState(false);
   const [user, setUser] = useState({
-    user: {
+    userDetails: {
       id: '',
       name: '',
       email: '',
@@ -26,26 +26,14 @@ function App() {
     }
   });
 
-  const loadUser = (data) => {
-    setUser({
-      user: {
-        id: data.id,
-        name: data.name,
-        email: data.email,
-        entries: data.entries,
-        joined: data.joined
-      } 
-    })
-  }
-
   return (
     <div className='app'>
       <div className="page-container">
         {/* <ParticleBackdrop /> */}
-        <Navigation userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} />
+        <Navigation userLoggedIn={userLoggedIn} setUser={setUser} setuserLoggedIn={setuserLoggedIn} />
         <main className="food-detector">
           <Routes>
-            <Route exact path="/" element={<FoodDetector userLoggedIn={userLoggedIn} user={user} setUser={setUser} />} />
+            <Route exact path="/" element={<FoodDetector userLoggedIn={userLoggedIn} userDetails={user.userDetails} setUser={setUser} />} />
             <Route exact path="/register" element={
               userLoggedIn 
               ? <Navigate to="/" />
@@ -54,7 +42,7 @@ function App() {
             <Route exact path="/login" element={
               userLoggedIn 
               ? <Navigate to="/" />
-              : <LoginForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} loadUser={loadUser} />
+              : <LoginForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} setUser={setUser} />
             } />
           </Routes>
         </main>  

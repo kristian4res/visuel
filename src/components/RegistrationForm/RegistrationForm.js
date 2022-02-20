@@ -93,6 +93,7 @@ const RegistrationForm = ({userLoggedIn, setuserLoggedIn, setUser}) => {
                     <label className="form__label" htmlFor="confirmPassword">Confirm Password</label>
                     <input className="form__input" onChange={onConfirmPasswordChange} value={confirmPassword} type="password" name='confirmPassword' placeholder='Confirm password' required />
                 </div>
+                <span className="form__error-text" style={{ 'display': `${errorText.length !== 0 ? 'inline-block' : 'none'}`}}>{errorText ? errorText.error : ''}</span>
                 <div className="form__group form__group--btn">
                     <button className="btn btn--colored-single" type="submit">Register</button>
                 </div>

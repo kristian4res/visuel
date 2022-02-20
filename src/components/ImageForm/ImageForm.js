@@ -1,4 +1,4 @@
-const ImageForm = ({ userLoggedIn, onInputChange, onUrlSubmit }) => {
+const ImageForm = ({ userLoggedIn, onInputChange, input, onUrlSubmit }) => {
     return (
         <section className='food-detector__image-form'>
             <header className='food-detector__header'>
@@ -20,7 +20,7 @@ const ImageForm = ({ userLoggedIn, onInputChange, onUrlSubmit }) => {
                 userLoggedIn 
                 ? (<form className='food-detector__form' onSubmit={onUrlSubmit}>
                     <div className="food-detector__form-group">
-                        <input className='food-detector__input' onChange={onInputChange} type="text" pattern="https://.*" placeholder='Paste image URL' required />
+                        <input className='food-detector__input' onChange={onInputChange} value={input} type="text" pattern="https://.*" title="Image URL link" placeholder='Paste image URL' required />
                         <button className='btn' type="submit">Detect</button>
                     </div>
                 </form>)
