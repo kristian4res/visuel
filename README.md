@@ -1,7 +1,11 @@
 # Visuel
 Visuel is a ML-based full-stack web application using one of Clarifai's API. <br/> 
-**This project is still a work in progress.**
+**Project is functional but there are a few bugs.**
 
+#### List of bugs (to be fixed)
+  - User entry count disappears after refreshing the page.
+  - Reloading the page causes the current results to disappear and reset.
+  - Typing animation does not render the correct keywords smoothly.
 ### Built With
   - [React](https://reactjs.org/)
   - [Scss/Sass](https://sass-lang.com/)
