@@ -10,41 +10,55 @@ import Footer from './components/Footer/Footer';
 import FoodDetector from './pages/food-detector/food-detector.component';
 import LoginForm from './components/LoginForm/LoginForm';
 import RegistrationForm from './components/RegistrationForm/RegistrationForm';
-// import ParticleBackdrop from './components/ParticleBackdrop/ParticleBackdrop';
 
 import './App.scss';
 
 function App() {
   const [userLoggedIn, setuserLoggedIn] = useState(false);
   const [user, setUser] = useState({
-    userDetails: {
-      id: '',
-      name: '',
-      email: '',
-      entries: 0,
-      joined: ''
-    }
+    userDetails: {}
   });
 
   useEffect(() => {
     try  {
-      const userDetails = JSON.parse(window.localStorage.getItem("visuel-user"));
-      setUser({userDetails: userDetails});
-      setuserLoggedIn(true);
+      const userSession = JSON.parse(window.localStorage.getItem("visuel-user"));
+      if (Object.keys(userSession).length !== 0) {
+        loadUser(userSession);
+        setuserLoggedIn(true);
+      }
+      else {
+        return "No user in session";
+      }
     }
     catch (err) {
-      return "No user in session";
+      return "Unexpected error occured while trying to find user session";
     }
   }, [setUser]);
 
   useEffect(() => {
-    window.localStorage.setItem("visuel-user", JSON.stringify(user.userDetails));
+    if (Object.keys(user).length !== 0) {
+      window.localStorage.setItem("visuel-user", JSON.stringify(user.userDetails));
+    }
+    else {
+      return "No user details set";
+    }
   }, [user]);
+
+  const loadUser = (userData) => {
+    setUser({
+      userDetails: {
+        id: userData.id,
+        name: userData.name,
+        email: userData.email,
+        image_entries: userData.entries,
+        joined: userData.joined
+      }
+    });
+  }
 
   return (
     <div className='app'>
       <div className="page-container">
-        {/* <ParticleBackdrop /> */}
         <Navigation userLoggedIn={userLoggedIn} setUser={setUser} setuserLoggedIn={setuserLoggedIn} />
         <main className="food-detector">
           <Routes>
@@ -52,12 +66,12 @@ function App() {
             <Route exact path="/register" element={
               userLoggedIn 
               ? <Navigate to="/" />
-              : <RegistrationForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} />
+              : <RegistrationForm userLoggedIn={userLoggedIn} />
             } />
             <Route exact path="/login" element={
               userLoggedIn 
               ? <Navigate to="/" />
-              : <LoginForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} setUser={setUser} />
+              : <LoginForm userLoggedIn={userLoggedIn} setuserLoggedIn={setuserLoggedIn} loadUser={loadUser} />
             } />
           </Routes>
         </main>  

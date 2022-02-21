@@ -4,6 +4,8 @@ import ImageForm from '../../components/ImageForm/ImageForm';
 import ImageResults from '../../components/ImageResults/ImageResults';
 
 const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
+  const API_BASE = "https://visuel-api-en.herokuapp.com/";
+
   const [input, setInput] = useState('');
   const [url, setUrl] = useState('https://preppykitchen.com/wp-content/uploads/2019/08/Pancakes-recipe-1200.jpg');
   const [concepts, setConcepts] = useState([
@@ -13,8 +15,10 @@ const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
   );
 
   useEffect(() => {
-    startAPICall();
-  }, [url]);
+    if (Object.keys(userDetails).length !== 0) {
+      startAPICall();
+    }
+  }, [url, userDetails]);
   
   const filterPredictions = (data) => {
     const imagePredictions = data.outputs[0].data.concepts;
@@ -22,8 +26,8 @@ const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
   };
 
   const callClarifaiAPI = async (userDetails) => {
-    if (userDetails.id) {
-      const response = await fetch('http://localhost:3001/api/image', 
+    if (userDetails) {
+      const response = await fetch(`${API_BASE}api/image`, 
         {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -43,9 +47,9 @@ const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
     return "No user ID received";
   }
 
-  const updateUserEntries = async (response, userDetails) => {
+  const updateUserEntries = async (response) => {
     if (response && userDetails.id) {
-      const res = await fetch('http://localhost:3001/profile/entries', 
+      const res = await fetch(`${API_BASE}profile/entries`, 
         {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
@@ -57,9 +61,11 @@ const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
             })  
         });
       
-      if (res.success.length > 0) {
-        setUser({user: Object.assign(userDetails, {entries: res.entries})})
-        return 'success';
+      const dataResponse = res.json();
+
+      if (dataResponse) {
+        // setUser({userDetails: Object.assign(userDetails, {image_entries: dataResponse.user.entries})});
+        return 'Success';
       }
       return 'Could not update user entries';
     }
@@ -77,7 +83,7 @@ const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
       }
   
       if (userDetails && userLoggedIn && response.success.length !== 0) {
-        updateUserEntries(response, userDetails);
+        updateUserEntries(response);
       }
     }
     catch (err) {
@@ -97,7 +103,7 @@ const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
 
   return (
       <>
-        <ImageForm userLoggedIn={userLoggedIn} onInputChange={onInputChange} input={input} onUrlSubmit={onUrlSubmit} />
+        <ImageForm userDetails={userDetails} userLoggedIn={userLoggedIn} onInputChange={onInputChange} input={input} onUrlSubmit={onUrlSubmit} />
         <ImageResults imgUrl={url} imgConcepts={concepts} />
       </>
   );

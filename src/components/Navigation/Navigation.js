@@ -29,11 +29,13 @@ const Navigation = ({ userLoggedIn, setUser, setuserLoggedIn }) => {
                     {
                         userLoggedIn 
                         ? (<li className="navigation__item">
-                                {/* Hacky Logout */}
+                                {/* Hacky Logout => use button + useNavigate instead */}
                                 <a href="/" className="navigation__link" onClick={() => {
-                                    setUser({userDetails: {}});
-                                    window.localStorage.removeItem("visuel-user");
-                                    setuserLoggedIn(false);
+                                    if (window.confirm("Are you sure you want to log out?")) {
+                                        setUser({userDetails: {}});
+                                        setuserLoggedIn(false);
+                                        window.localStorage.removeItem("visuel-user");
+                                    }
                                 }}>
                                     Log Out
                                 </a>

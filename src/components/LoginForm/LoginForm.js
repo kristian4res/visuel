@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
-const LoginForm = ({ userLoggedIn, setuserLoggedIn, setUser }) => {
+const LoginForm = ({ userLoggedIn, setuserLoggedIn, loadUser }) => {
+    const API_BASE = "https://visuel-api-en.herokuapp.com/";
+    
     const navigate = useNavigate();
 
     const [errorText, setErrorText] = useState({});
@@ -18,43 +20,44 @@ const LoginForm = ({ userLoggedIn, setuserLoggedIn, setUser }) => {
     }
 
     const postData = async () => {
-        const response = await fetch('http://localhost:3001/login', {
+        const response = await fetch(`${API_BASE}login`, {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
                 email: email,
                 password: password
             })
-        })
+        });
 
         return response.json();
     }
 
-    const onSubmitLoginCredentials = (e) => {
+    const onSubmitLoginCredentials = async (e) => {
         e.preventDefault();
 
-        postData()
-        .then((data) => {
-            if (!userLoggedIn && data.success.length > 0) {
+        const dataResponse = await postData();
+
+        if (dataResponse) {
+            if (!userLoggedIn && dataResponse.success) {
                 // Set user details and login status
-                setUser({userDetails: data.user});
+                loadUser(dataResponse.user);
                 setuserLoggedIn(true);
 
                 navigate(`/`);
             }
             else {
                 // Set error text
-                setErrorText(data);
+                setErrorText(dataResponse);
                 // Reset state
                 setEmail('');
                 setPassword('');
 
                 navigate(`/login`);
             }
-        })
-        .catch(err => {
+        }
+        else {
             return "error with submitting login credentials";
-        });
+        }
     };
 
   return (

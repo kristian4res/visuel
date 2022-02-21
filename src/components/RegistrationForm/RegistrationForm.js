@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const RegistrationForm = ({userLoggedIn, setuserLoggedIn, setUser}) => {
+const RegistrationForm = ({ userLoggedIn }) => {
+    const API_BASE = "https://visuel-api-en.herokuapp.com/";
+
     const navigate = useNavigate();
+    
     const [errorText, setErrorText] = useState({});
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -26,7 +29,7 @@ const RegistrationForm = ({userLoggedIn, setuserLoggedIn, setUser}) => {
     }
 
     const postData = async () => {
-        const response = await fetch('http://localhost:3001/register', {
+        const response = await fetch(`${API_BASE}register`, {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -43,27 +46,27 @@ const RegistrationForm = ({userLoggedIn, setuserLoggedIn, setUser}) => {
         e.preventDefault();
 
         // Check if passwords match
-        if (password === confirmPassword) {
+        if (password.valueOf() !== confirmPassword.valueOf()) {
             setErrorText({passwordError: 'Passwords do not match'});
             return null;
         }
 
-        postData().then(
-            (serverResponse) => {
-                if (!userLoggedIn && serverResponse.success.length > 0) {
-                    setErrorText('');
-                    setuserLoggedIn(true);
-                    navigate(`/`);
-                }
-                else {
-                    setErrorText(serverResponse);
-                    navigate(`/register`);
-                }
-                
-                setEmail('');
-                setPassword('');
+        const dataResponse = await postData();
+
+        if (dataResponse) {
+            if (!userLoggedIn && dataResponse.success) {
+                // Redirect to login
+                navigate(`/login`);
             }
-        );
+            else {
+                // Set error and reload
+                setErrorText(dataResponse);
+                navigate(`/register`);
+            }
+        }
+        else {
+            return "No data received back";
+        }
     };
 
     return (
