@@ -8,6 +8,7 @@ Visuel is a ML-based full-stack web application using one of Clarifai's API. <br
   - Typing animation does not render the correct keywords smoothly.
 ### Built With
   - [React](https://reactjs.org/)
+  - [React Router](https://v5.reactrouter.com/web/guides/quick-start)
   - [Scss/Sass](https://sass-lang.com/)
   - [PostgreSQL](https://www.postgresql.org/)
   - [Heroku](https://www.heroku.com/)
@@ -18,3 +19,4 @@ To visit the latest live version of the app, go to this [link]().
 ## Acknowledgements
   - [Andrei Neagoie](https://github.com/aneagoie)
   - [Clarifai APIs](https://www.clarifai.com/computer-vision)
+  - [Typing animation component](https://www.npmjs.com/package/react-type-animation)
