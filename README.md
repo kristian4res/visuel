@@ -14,7 +14,7 @@ Visuel is a ML-based full-stack web application using one of Clarifai's API. <br
   - [Heroku](https://www.heroku.com/)
 
 ## Usage
-To visit the latest live version of the app, go to this [link]().
+To visit the latest live version of the app, go to this [link](https://visuel-en.herokuapp.com/).
 
 ## Acknowledgements
   - [Andrei Neagoie](https://github.com/aneagoie)
