@@ -706,7 +706,7 @@
   }
 
   &__copyright {
-    color: inherit;
+    color: var(--color-black);
   }
 
   &__link {
@@ -732,11 +732,11 @@
     }
 
     &:hover {
-      color: var(--color-black);
+      color: var(--color-white);
       transform: translateY(-.8rem);
 
         &::after {
-          background-color: var(--color-black);
+          background-color: var(--color-white);
           width: 100%;
         }
     }
