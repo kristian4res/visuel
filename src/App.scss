@@ -659,8 +659,13 @@
   }
 
   &:hover {
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, .6);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, .4);
       transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .6);
+    transform: translateY(-2px);
   }
 }
 
