@@ -47,8 +47,8 @@ const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
     return "No user ID received";
   }
 
-  const updateUserEntries = async (response) => {
-    if (response && userDetails.id) {
+  const updateUserEntries = async () => {
+    if (userDetails.id) {
       const res = await fetch(`${API_BASE}profile/entries`, 
         {
             method: 'PUT',
@@ -59,31 +59,25 @@ const FoodDetector = ({ userLoggedIn, userDetails, setUser }) => {
                 email: userDetails.email
               }
             })  
-        });
-      
-      const dataResponse = res.json();
-
-      if (dataResponse) {
-        // setUser({userDetails: Object.assign(userDetails, {image_entries: dataResponse.user.entries})});
-        return 'Success';
-      }
-      return 'Could not update user entries';
+          });
+          return res.json();
     }
     else {
-      return 'Error with entries update request'
+      return "No user credentials found";
     }
   }
 
   const startAPICall = async () => {
-    const response = await callClarifaiAPI(userDetails);
+    const imageResponse = await callClarifaiAPI(userDetails);
+    const entriesResponse = await updateUserEntries();
 
     try {
-      if (response.success.length !== 0) {
-        setConcepts(filterPredictions(response.image.keywords));
+      if (imageResponse.success.length !== 0) {
+        setConcepts(filterPredictions(imageResponse.image.keywords));
+        setUser({userDetails: Object.assign(userDetails, {image_entries: entriesResponse.user.entries})});
       }
-  
-      if (userDetails && userLoggedIn && response.success.length !== 0) {
-        updateUserEntries(response);
+      else {
+        return "Error while trying submit image";
       }
     }
     catch (err) {
